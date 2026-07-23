@@ -1,0 +1,18 @@
+{
+  "name": "DEXPRO",
+  "version": "1.0.0",
+  "description": "DEXPRO - Curated Nile Quartz & Black Sand Mineral Catalog",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "minerals",
+    "quartz",
+    "black sand",
+    "catalog",
+    "nile"
+  ],
+  "author": "kdefrawy",
+  "license": "MIT"
+}
