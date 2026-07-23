@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Clock - DEXPRO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        header {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        nav {
+            background: rgba(0,0,0,0.6);
+            padding: 1rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.5rem;
+            background: #667eea;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        
+        nav a:hover {
+            background: #764ba2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .controls {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        .controls label {
+            margin-right: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .controls select {
+            padding: 0.5rem 1rem;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        .controls select:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+        
+        .clock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .clock-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .clock-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .clock-city {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .clock-timezone {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+        
+        .clock-time {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            letter-spacing: 2px;
+        }
+        
+        .clock-ampm {
+            font-size: 1.2rem;
+            color: #764ba2;
+            font-weight: bold;
+        }
+        
+        .clock-date {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .add-clock-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .add-clock-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .remove-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .remove-btn:hover {
+            background: #ee5a52;
+        }
+        
+        footer {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌍 World Clock</h1>
+        <p>Track time across multiple time zones</p>
+    </header>
+    
+    <nav>
+        <a href="../index.html">← Back to Home</a>
+        <a href="index.html">Tools</a>
+        <a href="../catalog/mineral-catalogue.html">Catalog</a>
+    </nav>
+    
+    <div class="container">
+        <div class="controls">
+            <label for="timezone-select">Add Time Zone:</label>
+            <select id="timezone-select">
+                <option value="">-- Select a Time Zone --</option>
+                <option value="America/New_York">New York (EST/EDT)</option>
+                <option value="America/Chicago">Chicago (CST/CDT)</option>
+                <option value="America/Denver">Denver (MST/MDT)</option>
+                <option value="America/Los_Angeles">Los Angeles (PST/PDT)</option>
+                <option value="Europe/London">London (GMT/BST)</option>
+                <option value="Europe/Paris">Paris (CET/CEST)</option>
+                <option value="Europe/Berlin">Berlin (CET/CEST)</option>
+                <option value="Europe/Moscow">Moscow (MSK)</option>
+                <option value="Asia/Dubai">Dubai (GST)</option>
+                <option value="Asia/Kolkata">India (IST)</option>
+                <option value="Asia/Bangkok">Bangkok (ICT)</option>
+                <option value="Asia/Hong_Kong">Hong Kong (HKT)</option>
+                <option value="Asia/Tokyo">Tokyo (JST)</option>
+                <option value="Asia/Seoul">Seoul (KST)</option>
+                <option value="Australia/Sydney">Sydney (AEDT/AEST)</option>
+                <option value="Pacific/Auckland">Auckland (NZDT/NZST)</option>
+                <option value="Africa/Cairo">Cairo (EET)</option>
+                <option value="Africa/Lagos">Lagos (WAT)</option>
+                <option value="America/Toronto">Toronto (EST/EDT)</option>
+                <option value="America/Vancouver">Vancouver (PST/PDT)</option>
+                <option value="America/Mexico_City">Mexico City (CST/CDT)</option>
+                <option value="America/Sao_Paulo">São Paulo (BRT/BRST)</option>
+                <option value="America/Buenos_Aires">Buenos Aires (ART)</option>
+            </select>
+            <button class="add-clock-btn" onclick="addClock()">Add Clock</button>
+        </div>
+        
+        <div class="clock-grid" id="clock-container"></div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 DEXPRO World Clock | Track Time Zones Globally</p>
+    </footer>
+    
+    <script>
+        // Default time zones to display
+        const defaultTimezones = [
+            { city: 'Cairo', timezone: 'Africa/Cairo' },
+            { city: 'London', timezone: 'Europe/London' },
+            { city: 'New York', timezone: 'America/New_York' },
+            { city: 'Tokyo', timezone: 'Asia/Tokyo' }
+        ];
+        
+        // Storage key for localStorage
+        const STORAGE_KEY = 'dexpro-timezones';
+        
+        // Initialize clocks
+        function initializeClocks() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            const timezones = stored ? JSON.parse(stored) : defaultTimezones;
+            
+            renderClocks(timezones);
+            updateClocks();
+            
+            // Update every second
+            setInterval(() => updateClocks(), 1000);
+        }
+        
+        // Render clock cards
+        function renderClocks(timezones) {
+            const container = document.getElementById('clock-container');
+            container.innerHTML = '';
+            
+            timezones.forEach((item, index) => {
+                const clockCard = document.createElement('div');
+                clockCard.className = 'clock-card';
+                clockCard.id = `clock-${index}`;
+                
+                clockCard.innerHTML = `
+                    <div class="clock-city">${item.city}</div>
+                    <div class="clock-timezone">${item.timezone}</div>
+                    <div class="clock-time" id="time-${index}">--:--:--</div>
+                    <div class="clock-ampm" id="ampm-${index}">--</div>
+                    <div class="clock-date" id="date-${index}">Loading...</div>
+                    <button class="remove-btn" onclick="removeClock(${index})">Remove</button>
+                `;
+                
+                container.appendChild(clockCard);
+            });
+        }
+        
+        // Update all clocks
+        function updateClocks() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            const timezones = stored ? JSON.parse(stored) : defaultTimezones;
+            
+            timezones.forEach((item, index) => {
+                updateClock(item.timezone, index);
+            });
+        }
+        
+        // Update individual clock
+        function updateClock(timezone, index) {
+            const now = new Date();
+            const formatter = new Intl.DateTimeFormat('en-US', {
+                timeZone: timezone,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            
+            const dateFormatter = new Intl.DateTimeFormat('en-US', {
+                timeZone: timezone,
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            const parts = formatter.formatToParts(now);
+            let time = '';
+            let ampm = '';
+            
+            parts.forEach(part => {
+                if (part.type === 'hour' || part.type === 'minute' || part.type === 'second') {
+                    time += part.value + (part.type !== 'second' ? ':' : '');
+                }
+                if (part.type === 'dayPeriod') {
+                    ampm = part.value;
+                }
+            });
+            
+            const timeElement = document.getElementById(`time-${index}`);
+            const ampmElement = document.getElementById(`ampm-${index}`);
+            const dateElement = document.getElementById(`date-${index}`);
+            
+            if (timeElement) timeElement.textContent = time;
+            if (ampmElement) ampmElement.textContent = ampm;
+            if (dateElement) dateElement.textContent = dateFormatter.format(now);
+        }
+        
+        // Add new clock
+        function addClock() {
+            const select = document.getElementById('timezone-select');
+            const timezone = select.value;
+            
+            if (!timezone) {
+                alert('Please select a time zone');
+                return;
+            }
+            
+            // Get city name from timezone
+            const city = timezone.split('/').pop().replace(/_/g, ' ');
+            
+            const stored = localStorage.getItem(STORAGE_KEY);
+            const timezones = stored ? JSON.parse(stored) : defaultTimezones;
+            
+            // Check if timezone already exists
+            if (timezones.some(t => t.timezone === timezone)) {
+                alert('This time zone is already displayed');
+                return;
+            }
+            
+            timezones.push({ city, timezone });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(timezones));
+            
+            renderClocks(timezones);
+            select.value = '';
+        }
+        
+        // Remove clock
+        function removeClock(index) {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            const timezones = stored ? JSON.parse(stored) : defaultTimezones;
+            
+            timezones.splice(index, 1);
+            
+            if (timezones.length === 0) {
+                localStorage.removeItem(STORAGE_KEY);
+            } else {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(timezones));
+            }
+            
+            renderClocks(timezones);
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initializeClocks);
+    </script>
+</body>
+</html>
