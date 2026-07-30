@@ -3,112 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DEXPRO - Curated Nile Quartz Catalog in dexpro.com.co website ">
-    <title>DEXPRO - Nile Quartz Catalog</title>
+    <meta name="description" content="DEXPRO - Curated Nile Quartz & Black Sand Mineral Catalog on dexpro.com.co">
+    <title>DEXPRO - Nile Quartz & Black Sand Minerals</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1e293b;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
             min-height: 100vh;
         }
         header {
-            background: rgba(0,0,0,0.8);
+            background: rgba(15,23,42,0.92);
+            backdrop-filter: blur(12px);
             color: white;
             padding: 2rem;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             margin-bottom: 0.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1.15rem;
+            color: #cbd5e1;
         }
         nav {
-            background: rgba(0,0,0,0.6);
+            background: rgba(15,23,42,0.8);
             padding: 1rem;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         nav a {
-            color: white;
+            color: #e2e8f0;
             text-decoration: none;
-            padding: 0.5rem 1.5rem;
-            margin: 0 0.5rem;
-            background: #667eea;
-            border-radius: 5px;
+            padding: 0.6rem 1.5rem;
+            margin: 0 0.3rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
             display: inline-block;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 600;
         }
         nav a:hover {
-            background: #764ba2;
+            background: #4f46e5;
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
         }
         main {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            margin: 2.5rem auto;
+            padding: 2.5rem;
+            background: rgba(255,255,255,0.96);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         .hero {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
         }
         .hero h2 {
-            font-size: 2rem;
-            color: #667eea;
+            font-size: 2.25rem;
+            color: #1e1b4b;
             margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: #475569;
+            max-width: 800px;
+            margin: 0 auto;
         }
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
         }
         .feature-card {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
+            background: #f8fafc;
+            padding: 1.75rem;
+            border-radius: 12px;
+            border-left: 5px solid #4f46e5;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
         }
         .feature-card h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
+            color: #1e1b4b;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+        .about-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f1f5f9;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        .about-section h2 {
+            color: #1e1b4b;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
+        .cta-container {
+            text-align: center;
+            margin-top: 2.5rem;
         }
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 5px;
+            padding: 1rem 2.25rem;
+            border-radius: 8px;
             text-decoration: none;
             font-size: 1.1rem;
-            transition: transform 0.3s;
-            margin-top: 1rem;
-            margin-right: 1rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(79,70,229,0.4);
         }
         .cta-button:hover {
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79,70,229,0.6);
+        }
+        .cta-secondary {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            box-shadow: 0 4px 15px rgba(217,119,6,0.4);
+        }
+        .cta-secondary:hover {
+            box-shadow: 0 8px 25px rgba(217,119,6,0.6);
         }
         footer {
-            background: rgba(0,0,0,0.8);
-            color: white;
+            background: rgba(15,23,42,0.95);
+            color: #94a3b8;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        footer a {
+            color: #cbd5e1;
+            text-decoration: underline;
         }
     </style>
 </head>
-<body>
+<body id="home">
     <header>
         <h1>DEXPRO</h1>
         <p>Curated Nile Quartz & Black Sand Mineral Catalog</p>
@@ -124,32 +189,38 @@
     <main>
         <section class="hero">
             <h2>Welcome to DEXPRO</h2>
-            <p>Discover our exclusive collection of premium Nile Quartz and Black Sand minerals, carefully curated for quality and authenticity.</p>
+            <p>Discover our exclusive collection of premium Nile Quartz and Black Sand minerals, carefully curated for industrial purity, technical manufacturing, and authenticity.</p>
         </section>
         
         <div class="features">
             <div class="feature-card">
-                <h3>Premium Quality</h3>
-                <p>Handpicked minerals sourced directly from the finest deposits.</p>
+                <h3>💎 Ultra-Purity Quartz</h3>
+                <p>High silica quartz (SiO₂ &gt; 99.8%) handpicked from Eastern Nile deposits for optical, semiconductor, and glass applications.</p>
             </div>
             <div class="feature-card">
-                <h3>Authentic Products</h3>
-                <p>100% genuine Nile Quartz and Black Sand minerals with certification.</p>
+                <h3>🌑 Black Sand Heavy Minerals</h3>
+                <p>100% genuine Ilmenite, Magnetite, Zircon, and Rutile concentrates with laboratory verified technical analysis.</p>
             </div>
             <div class="feature-card">
-                <h3>Expert Curation</h3>
-                <p>Years of expertise in mineral selection and quality assurance.</p>
+                <h3>📜 Certified & Technical</h3>
+                <p>Comprehensive physical and chemical property sheets, particle size distributions, and verified origin certificates.</p>
             </div>
         </div>
+
+        <section id="about" class="about-section">
+            <h2>About DEXPRO</h2>
+            <p>DEXPRO specializes in the sourcing, technical characterization, and cataloging of high-value industrial mineral deposits from the Nile Basin and Red Sea mineral belts. Our catalog provides precise chemical compositions, grain specifications, and direct inquiry support for global buyers, manufacturing plants, and researchers.</p>
+        </section>
         
-        <div style="text-align: center;">
-            <a href="catalog/mineral-catalogue.html" class="cta-button">View Our Catalog</a>
-            <a href="tools/index.html" class="cta-button">Explore Tools</a>
+        <div class="cta-container">
+            <a href="catalog/mineral-catalogue.html" class="cta-button">Browse Mineral Catalog →</a>
+            <a href="tools/index.html" class="cta-button cta-secondary">Explore Utility Tools →</a>
         </div>
     </main>
     
     <footer>
-        <p>&copy; 2026 DEXPRO. All rights reserved. | Nile Quartz & Black Sand Minerals</p>
+        <p>&copy; 2026 DEXPRO. All rights reserved. | <a href="http://www.dexpro.com.co">www.dexpro.com.co</a></p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #64748b;">Nile Quartz & Black Sand Mineral Catalog</p>
     </footer>
 </body>
 </html>
