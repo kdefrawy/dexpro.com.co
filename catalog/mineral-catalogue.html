@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DEXPRO - Official Nile Quartz & Heavy Black Sand Mineral Catalogue. High-purity quartz, ilmenite, magnetite, zircon, and rutile concentrates.">
+    <title>DEXPRO - Mineral Catalogue | Nile Quartz & Black Sand</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #0f172a;
+            --accent-gold: #f59e0b;
+            --accent-cyan: #06b6d4;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --radius-md: 12px;
+            --shadow-lg: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #f59e0b, #6366f1);
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: white;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-text p {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-1px);
+        }
+
+        .hero-banner {
+            max-width: 1280px;
+            margin: 2rem auto 1rem;
+            padding: 2.5rem 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-banner h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-banner p {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            max-width: 750px;
+            margin: 0 auto 2rem;
+        }
+
+        .controls-wrapper {
+            max-width: 1280px;
+            margin: 0 auto 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .filter-bar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1 1 300px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(15, 23, 42, 0.6);
+            color: white;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-box input::placeholder {
+            color: #94a3b8;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            pointer-events: none;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(15, 23, 42, 0.5);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-gold);
+            color: #0f172a;
+            font-weight: 700;
+            border-color: var(--accent-gold);
+        }
+
+        .catalog-container {
+            max-width: 1280px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .mineral-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .mineral-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .mineral-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-banner {
+            height: 180px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .bg-quartz {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+
+        .bg-blacksand {
+            background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
+        }
+
+        .bg-ilmenite {
+            background: linear-gradient(135deg, #475569 0%, #1e293b 100%);
+        }
+
+        .bg-gold {
+            background: linear-gradient(135deg, #d97706 0%, #78350f 100%);
+        }
+
+        .mineral-visual-icon {
+            font-size: 3.5rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            margin-bottom: 0.5rem;
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(15, 23, 42, 0.85);
+            color: var(--accent-gold);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+
+        .formula-tag {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .mineral-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .mineral-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        .specs-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.25rem;
+            font-size: 0.85rem;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-label {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .spec-value {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .card-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            flex: 1;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--secondary);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-outline:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        /* Modal Styles */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            place-items: center;
+            padding: 1.5rem;
+        }
+
+        .modal-backdrop.open {
+            display: grid;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 20px;
+            max-width: 650px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            position: relative;
+            animation: modalSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            background: #f1f5f9;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #e2e8f0;
+            color: var(--secondary);
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            color: var(--secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .modal-subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section h4 {
+            font-size: 1rem;
+            color: var(--secondary);
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .tech-table td {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .tech-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tech-table td:first-child {
+            color: var(--text-muted);
+            font-weight: 500;
+            width: 40%;
+        }
+
+        .tech-table td:last-child {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .chemical-bar-container {
+            margin-top: 0.5rem;
+        }
+
+        .chem-item {
+            margin-bottom: 0.6rem;
+        }
+
+        .chem-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .chem-progress {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .chem-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent-gold));
+            border-radius: 4px;
+        }
+
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            color: #94a3b8;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a {
+            color: #e2e8f0;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            nav {
+                justify-content: center;
+            }
+            .hero-banner h2 {
+                font-size: 1.8rem;
+            }
+            .mineral-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../index.html" class="brand-container">
+            <div class="brand-logo">DX</div>
+            <div class="brand-text">
+                <h1>DEXPRO</h1>
+                <p>MINERAL CATALOG & TOOLS</p>
+            </div>
+        </a>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="mineral-catalogue.html" class="active">Catalog</a>
+            <a href="../tools/index.html">Tools</a>
+            <a href="../index.html#about">About</a>
+        </nav>
+    </header>
+
+    <section class="hero-banner">
+        <h2>Curated Mineral Catalogue</h2>
+        <p>Explore high-purity Nile Quartz and heavy Black Sand mineral concentrates sourced directly from verified deposit sites for industrial, manufacturing, and technical applications.</p>
+    </section>
+
+    <div class="controls-wrapper">
+        <div class="filter-bar">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search by mineral name, formula, or code...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Minerals</button>
+                <button class="filter-btn" data-filter="quartz">Nile Quartz</button>
+                <button class="filter-btn" data-filter="blacksand">Black Sand Minerals</button>
+                <button class="filter-btn" data-filter="rare">Rare / Specialized</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="catalog-container">
+        <div class="mineral-grid" id="mineralGrid">
+
+            <!-- Card 1: High Purity Nile Quartz -->
+            <div class="mineral-card" data-category="quartz" data-name="High Purity Silica Quartz" data-formula="SiO2">
+                <div class="card-banner bg-quartz">
+                    <span class="category-badge">NILE QUARTZ</span>
+                    <div class="mineral-visual-icon">💎</div>
+                    <span class="formula-tag">SiO₂ (99.8%)</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="mineral-title">Ultra-Purity Nile Quartz</h3>
+                    <p class="mineral-desc">Crystalline quartz sourced from Eastern Nile deposits. Exceptional clarity and thermal resistance for glass, solar photovoltaics, and semiconductors.</p>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">SiO2 Purity</span>
+                            <span class="spec-value">99.85%</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Mohs Hardness</span>
+                            <span class="spec-value">7.0</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Density</span>
+                            <span class="spec-value">2.65 g/cm³</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Grain Size</span>
+                            <span class="spec-value">0.1 - 2.5 mm</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-primary" onclick="openSpecModal('quartz-ultra')">Full Specifications</button>
+                        <button class="btn-outline" onclick="openInquiryModal('Ultra-Purity Nile Quartz')">Inquire</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Ilmenite Heavy Sand -->
+            <div class="mineral-card" data-category="blacksand" data-name="Ilmenite Concentrate" data-formula="FeTiO3">
+                <div class="card-banner bg-ilmenite">
+                    <span class="category-badge">BLACK SAND</span>
+                    <div class="mineral-visual-icon">🌑</div>
+                    <span class="formula-tag">FeTiO₃</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="mineral-title">Heavy Ilmenite Concentrate</h3>
+                    <p class="mineral-desc">Heavy mineral concentrate extracted from black sand sands. Primary feedstock for titanium dioxide (TiO₂) pigment and titanium metal production.</p>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">TiO2 Content</span>
+                            <span class="spec-value">48.5% - 52.0%</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Mohs Hardness</span>
+                            <span class="spec-value">5.5 - 6.0</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Specific Gravity</span>
+                            <span class="spec-value">4.72 g/cm³</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Fe Total</span>
+                            <span class="spec-value">34.2%</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-primary" onclick="openSpecModal('ilmenite-heavy')">Full Specifications</button>
+                        <button class="btn-outline" onclick="openInquiryModal('Heavy Ilmenite Concentrate')">Inquire</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Zircon Sand Concentrate -->
+            <div class="mineral-card" data-category="rare" data-name="Zircon Sand Concentrate" data-formula="ZrSiO4">
+                <div class="card-banner bg-gold">
+                    <span class="category-badge">RARE EARTH / SILICATE</span>
+                    <div class="mineral-visual-icon">✨</div>
+                    <span class="formula-tag">ZrSiO₄</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="mineral-title">Zircon Sand Concentrate</h3>
+                    <p class="mineral-desc">Premium refractory zircon grain. Highly stable at elevated temperatures; essential for ceramic glazes, foundry molds, and precision casting.</p>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">ZrO2 + HfO2</span>
+                            <span class="spec-value">66.2%</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Mohs Hardness</span>
+                            <span class="spec-value">7.5</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Specific Gravity</span>
+                            <span class="spec-value">4.68 g/cm³</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Refractory Pt</span>
+                            <span class="spec-value">&gt; 2200°C</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-primary" onclick="openSpecModal('zircon-prime')">Full Specifications</button>
+                        <button class="btn-outline" onclick="openInquiryModal('Zircon Sand Concentrate')">Inquire</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Magnetite Heavy Sand -->
+            <div class="mineral-card" data-category="blacksand" data-name="Magnetite Iron Ore Sand" data-formula="Fe3O4">
+                <div class="card-banner bg-blacksand">
+                    <span class="category-badge">BLACK SAND</span>
+                    <div class="mineral-visual-icon">🧲</div>
+                    <span class="formula-tag">Fe₃O₄</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="mineral-title">Magnetite Heavy Mineral Sand</h3>
+                    <p class="mineral-desc">High-magnetic response iron oxide concentrate. Superior quality for heavy media separation, coal washing, and dense aggregate ballast.</p>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">Fe Content</span>
+                            <span class="spec-value">67.8%</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Mohs Hardness</span>
+                            <span class="spec-value">6.0</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Specific Gravity</span>
+                            <span class="spec-value">5.18 g/cm³</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Magnetism</span>
+                            <span class="spec-value">&gt; 98.5%</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-primary" onclick="openSpecModal('magnetite-sand')">Full Specifications</button>
+                        <button class="btn-outline" onclick="openInquiryModal('Magnetite Heavy Mineral Sand')">Inquire</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Rutile High-Grade Grain -->
+            <div class="mineral-card" data-category="rare" data-name="Rutile High-Grade Concentrate" data-formula="TiO2">
+                <div class="card-banner bg-gold">
+                    <span class="category-badge">RARE / TITANIUM</span>
+                    <div class="mineral-visual-icon">⚡</div>
+                    <span class="formula-tag">TiO₂ (95%+)</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="mineral-title">Rutile High-Grade Grain</h3>
+                    <p class="mineral-desc">Naturally occurring natural titanium dioxide crystal grain. Prime component in flux-cored welding electrode coatings and high-grade titanium sponge manufacturing.</p>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">TiO2 Purity</span>
+                            <span class="spec-value">95.4%</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Mohs Hardness</span>
+                            <span class="spec-value">6.5</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Specific Gravity</span>
+                            <span class="spec-value">4.23 g/cm³</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Refractive Index</span>
+                            <span class="spec-value">2.61</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-primary" onclick="openSpecModal('rutile-prime')">Full Specifications</button>
+                        <button class="btn-outline" onclick="openInquiryModal('Rutile High-Grade Grain')">Inquire</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Golden Rose Quartz -->
+            <div class="mineral-card" data-category="quartz" data-name="Golden Rose Quartz" data-formula="SiO2 + Fe">
+                <div class="card-banner bg-quartz">
+                    <span class="category-badge">NILE QUARTZ</span>
+                    <div class="mineral-visual-icon">🔮</div>
+                    <span class="formula-tag">SiO₂ : Fe</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="mineral-title">Golden Rose Nile Quartz</h3>
+                    <p class="mineral-desc">Rare color-tinted alluvial quartz with natural iron trace inclusions. Sought after for architectural surfaces, gemstone lapidary, and decorative finishes.</p>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">SiO2 Content</span>
+                            <span class="spec-value">98.4%</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Mohs Hardness</span>
+                            <span class="spec-value">7.0</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Density</span>
+                            <span class="spec-value">2.66 g/cm³</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Origin</span>
+                            <span class="spec-value">Upper Nile Basin</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-primary" onclick="openSpecModal('golden-rose')">Full Specifications</button>
+                        <button class="btn-outline" onclick="openInquiryModal('Golden Rose Nile Quartz')">Inquire</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal Dialog -->
+    <div class="modal-backdrop" id="specModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('specModal')">&times;</button>
+            <h3 class="modal-title" id="modalTitle">Mineral Specification</h3>
+            <p class="modal-subtitle" id="modalSubtitle">DEXPRO Technical Data Sheet</p>
+            
+            <div class="modal-section">
+                <h4>Chemical Composition Analysis</h4>
+                <div class="chemical-bar-container" id="chemContainer">
+                    <!-- Progress bars dynamically injected -->
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h4>Physical Properties & Parameters</h4>
+                <table class="tech-table">
+                    <tbody id="techTableBody">
+                        <!-- Technical rows dynamically injected -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-section">
+                <h4>Primary Applications</h4>
+                <p id="modalApplications" style="font-size: 0.9rem; color: #475569; line-height: 1.6;"></p>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                <button class="btn-primary" style="width: 100%;" onclick="closeModal('specModal'); openInquiryModal(currentMineralName);">Request Official Certificate / Quote</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inquiry Modal -->
+    <div class="modal-backdrop" id="inquiryModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('inquiryModal')">&times;</button>
+            <h3 class="modal-title">Product Inquiry</h3>
+            <p class="modal-subtitle">Direct Inquiry for <span id="inquiryProductName" style="color: var(--primary);"></span></p>
+
+            <form onsubmit="handleInquirySubmit(event)">
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Your Name / Company</label>
+                    <input type="text" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Email Address</label>
+                    <input type="email" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Estimated Quantity (Metric Tons)</label>
+                    <input type="number" placeholder="e.g. 500" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Message / Specification Details</label>
+                    <textarea rows="3" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;" placeholder="Mention required particle sizes, purity threshold, or delivery terms..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Send Request</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 DEXPRO. All rights reserved. | <a href="http://www.dexpro.com.co">www.dexpro.com.co</a></p>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #64748b;">Nile Quartz & Black Sand Mineral Catalog</p>
+    </footer>
+
+    <script>
+        // Mineral Specifications Database
+        const specDatabase = {
+            'quartz-ultra': {
+                name: 'Ultra-Purity Nile Quartz',
+                formula: 'SiO₂ (99.85%)',
+                chem: [
+                    { name: 'SiO2 (Silicon Dioxide)', pct: 99.85 },
+                    { name: 'Al2O3 (Alumina)', pct: 0.08 },
+                    { name: 'Fe2O3 (Iron Oxide)', pct: 0.02 },
+                    { name: 'TiO2 (Titanium Dioxide)', pct: 0.01 },
+                    { name: 'Trace Elements', pct: 0.04 }
+                ],
+                props: {
+                    'Origin': 'Eastern Nile Alluvial Deposit',
+                    'Mohs Hardness': '7.0',
+                    'Specific Gravity': '2.65 g/cm³',
+                    'Melting Point': '1713 °C',
+                    'Moisture Content': '< 0.15%',
+                    'Grade': 'Electronic & Optical Grade'
+                },
+                apps: 'Used extensively in high-tech manufacturing including optical glass, solar cell quartz crucibles, silicon metal production, engineered stone surfaces, and high-frequency piezoelectric resonators.'
+            },
+            'ilmenite-heavy': {
+                name: 'Heavy Ilmenite Concentrate',
+                formula: 'FeTiO₃',
+                chem: [
+                    { name: 'TiO2 (Titanium Dioxide)', pct: 50.2 },
+                    { name: 'FeO (Ferrous Oxide)', pct: 33.8 },
+                    { name: 'Fe2O3 (Ferric Oxide)', pct: 12.1 },
+                    { name: 'SiO2 (Silica)', pct: 1.8 },
+                    { name: 'Al2O3 (Alumina)', pct: 1.2 }
+                ],
+                props: {
+                    'Origin': 'Red Sea / Coastal Black Sand Belt',
+                    'Mohs Hardness': '5.5 - 6.0',
+                    'Specific Gravity': '4.72 g/cm³',
+                    'Grain Size (d50)': '180 µm',
+                    'Magnetic Susceptibility': 'Moderate'
+                },
+                apps: 'Primary industrial raw material for synthetic rutile conversion, chloride and sulfate pigment manufacture, titanium metal refining, and heavy weighting media in drilling fluids.'
+            },
+            'zircon-prime': {
+                name: 'Zircon Sand Concentrate',
+                formula: 'ZrSiO₄',
+                chem: [
+                    { name: 'ZrO2 + HfO2', pct: 66.2 },
+                    { name: 'SiO2 (Silica)', pct: 32.5 },
+                    { name: 'Fe2O3 (Iron Oxide)', pct: 0.06 },
+                    { name: 'TiO2', pct: 0.18 },
+                    { name: 'Al2O3', pct: 0.8 }
+                ],
+                props: {
+                    'Origin': 'Nile Delta Mineral Sands',
+                    'Mohs Hardness': '7.5',
+                    'Specific Gravity': '4.68 g/cm³',
+                    'Refractory Point': '> 2200 °C',
+                    'Thermal Expansion': '4.5 × 10⁻⁶ /°C'
+                },
+                apps: 'Vital component in high-grade ceramic tile glazes, refractory bricks, precision investment casting molds, zirconium chemicals, and atomic nuclear cladding alloys.'
+            },
+            'magnetite-sand': {
+                name: 'Magnetite Heavy Mineral Sand',
+                formula: 'Fe₃O₄',
+                chem: [
+                    { name: 'Fe Total (Iron)', pct: 67.8 },
+                    { name: 'FeO', pct: 28.5 },
+                    { name: 'Fe2O3', pct: 65.2 },
+                    { name: 'SiO2', pct: 2.1 },
+                    { name: 'TiO2', pct: 1.1 }
+                ],
+                props: {
+                    'Origin': 'Nile Sediment Mineral Belt',
+                    'Mohs Hardness': '6.0',
+                    'Specific Gravity': '5.18 g/cm³',
+                    'Magnetic Separation Yield': '98.5%',
+                    'Bulk Density': '3.1 t/m³'
+                },
+                apps: 'Used for dense media separation (DMS) in mineral processing plants, heavy aggregate concrete ballast, iron ore pelletizing, and environmental magnet filtration.'
+            },
+            'rutile-prime': {
+                name: 'Rutile High-Grade Grain',
+                formula: 'TiO₂',
+                chem: [
+                    { name: 'TiO2 (Titanium Dioxide)', pct: 95.4 },
+                    { name: 'Fe2O3 (Iron Oxide)', pct: 1.1 },
+                    { name: 'ZrO2', pct: 0.8 },
+                    { name: 'SiO2', pct: 1.2 },
+                    { name: 'Al2O3', pct: 0.9 }
+                ],
+                props: {
+                    'Origin': 'Coastal Heavy Deposit',
+                    'Mohs Hardness': '6.5',
+                    'Specific Gravity': '4.23 g/cm³',
+                    'Refractive Index': '2.61',
+                    'Purity Grade': 'Premium Welding Flux Grade'
+                },
+                apps: 'Invaluable coating agent in arc welding electrodes, high-performance titanium sponge production, aerospace alloys, and UV-reflective specialty pigments.'
+            },
+            'golden-rose': {
+                name: 'Golden Rose Nile Quartz',
+                formula: 'SiO₂ + Fe',
+                chem: [
+                    { name: 'SiO2 (Silicon Dioxide)', pct: 98.4 },
+                    { name: 'Fe2O3 (Trace Iron Colorant)', pct: 0.95 },
+                    { name: 'Al2O3', pct: 0.35 },
+                    { name: 'Water of Crystallization', pct: 0.2 }
+                ],
+                props: {
+                    'Origin': 'Upper Nile Basin Gravels',
+                    'Mohs Hardness': '7.0',
+                    'Specific Gravity': '2.66 g/cm³',
+                    'Coloration': 'Natural Warm Amber-Rose',
+                    'Transparency': 'Translucent to Semi-Clear'
+                },
+                apps: 'Ideal for luxury architectural quartz countertops, decorative terrazzo, gemstone carving, landscape accents, and specialized mineral collections.'
+            }
+        };
+
+        let currentMineralName = '';
+
+        // Search & Filter Logic
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const mineralCards = document.querySelectorAll('.mineral-card');
+
+        searchInput.addEventListener('input', applyFilters);
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                applyFilters();
+            });
+        });
+
+        function applyFilters() {
+            const query = searchInput.value.toLowerCase().trim();
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+
+            mineralCards.forEach(card => {
+                const category = card.dataset.category;
+                const name = card.dataset.name.toLowerCase();
+                const formula = card.dataset.formula.toLowerCase();
+                const cardText = card.innerText.toLowerCase();
+
+                const matchesCategory = (activeFilter === 'all') || (category === activeFilter);
+                const matchesSearch = !query || name.includes(query) || formula.includes(query) || cardText.includes(query);
+
+                if (matchesCategory && matchesSearch) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Functions
+        function openSpecModal(key) {
+            const data = specDatabase[key];
+            if (!data) return;
+
+            currentMineralName = data.name;
+            document.getElementById('modalTitle').innerText = data.name;
+            document.getElementById('modalSubtitle').innerText = 'Formula: ' + data.formula + ' | DEXPRO Official Specification';
+
+            // Render Chemical Progress Bars
+            const chemContainer = document.getElementById('chemContainer');
+            chemContainer.innerHTML = '';
+            data.chem.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'chem-item';
+                div.innerHTML = `
+                    <div class="chem-label-row">
+                        <span>${item.name}</span>
+                        <span>${item.pct}%</span>
+                    </div>
+                    <div class="chem-progress">
+                        <div class="chem-fill" style="width: ${Math.min(100, item.pct)}%"></div>
+                    </div>
+                `;
+                chemContainer.appendChild(div);
+            });
+
+            // Render Tech Table
+            const techBody = document.getElementById('techTableBody');
+            techBody.innerHTML = '';
+            for (const [k, v] of Object.entries(data.props)) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${k}</td><td>${v}</td>`;
+                techBody.appendChild(tr);
+            }
+
+            document.getElementById('modalApplications').innerText = data.apps;
+            document.getElementById('specModal').classList.add('open');
+        }
+
+        function openInquiryModal(productName) {
+            document.getElementById('inquiryProductName').innerText = productName;
+            document.getElementById('inquiryModal').classList.add('open');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('open');
+        }
+
+        function handleInquirySubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! DEXPRO team will reach out to you within 24 hours regarding ' + document.getElementById('inquiryProductName').innerText + '.');
+            closeModal('inquiryModal');
+        }
+
+        // Close modal on outer backdrop click
+        window.onclick = function(e) {
+            if (e.target.classList.contains('modal-backdrop')) {
+                e.target.classList.remove('open');
+            }
+        };
+    </script>
+</body>
+</html>
