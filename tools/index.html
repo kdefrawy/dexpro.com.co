@@ -1,193 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DEXPRO Tools - World Clock, Catalog & More">
-    <title>Tools - DEXPRO</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DEXPRO tools include a World Clock for comparing local times across multiple time zones."
+    />
+    <meta name="theme-color" content="#173c4d" />
+    <title>DEXPRO Tools</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 2rem;
-        }
-        
-        header {
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-        
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        nav {
-            background: rgba(0,0,0,0.6);
-            padding: 1rem;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1.5rem;
-            margin: 0 0.5rem;
-            background: #667eea;
-            border-radius: 5px;
-            display: inline-block;
-            transition: background 0.3s;
-        }
-        
-        nav a:hover {
-            background: #764ba2;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+      :root {
+        --paper: #f6efe6;
+        --sand: #d4a77f;
+        --ink: #171d22;
+        --ink-soft: #3a4550;
+        --river: #123d4d;
+        --river-deep: #0d2b38;
+        --copper: #b7682d;
+        --mist: #edf2f5;
+        --line: rgba(18, 30, 38, 0.12);
+        --shadow: rgba(15, 22, 27, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: 'Manrope', 'Segoe UI', sans-serif;
+        background: linear-gradient(180deg, #f4ecdf 0%, #ebdcc5 100%);
+        color: var(--ink);
+        line-height: 1.6;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(18, 30, 38, 0.02),
+          rgba(18, 30, 38, 0.02) 1px,
+          transparent 1px,
+          transparent 7px
+        );
+        pointer-events: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:focus-visible, button:focus-visible, select:focus-visible {
+        outline: 3px solid rgba(183, 101, 46, 0.5);
+        outline-offset: 2px;
+      }
+
+      .site-shell {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem 4rem;
+      }
+
+      .site-header {
+        border: 1px solid var(--line);
+        background: rgba(13, 26, 33, 0.96);
+        color: #f5f0ea;
+        border-radius: 18px 18px 0 0;
+        box-shadow: 0 16px 32px var(--shadow);
+      }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 1.2rem 0.8rem;
+      }
+
+      .brand-mark {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(2.2rem, 5vw, 3.1rem);
+        letter-spacing: 0.08em;
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--sand);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+      }
+
+      .site-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        padding: 0 1rem 1rem;
+      }
+
+      .site-nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.7rem;
+        padding: 0.65rem 1rem;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        color: #f5f0ea;
+        border: 1px solid rgba(255,255,255,0.09);
+        transition: background 0.2s ease;
+      }
+
+      .site-nav a:hover,
+      .site-nav a:focus-visible {
+        background: rgba(212,167,127,0.16);
+      }
+
+      .site-nav a[aria-current="page"] {
+        background: rgba(212, 167, 127, 0.18);
+        border-color: rgba(212,167,127,0.66);
+      }
+
+      main {
+        background: rgba(255,255,255,0.74);
+        border: 1px solid var(--line);
+        border-top: none;
+        border-radius: 0 0 18px 18px;
+        box-shadow: 0 16px 32px var(--shadow);
+      }
+
+      .page-header {
+        padding: clamp(1.5rem, 4vw, 3rem) clamp(1.2rem, 4vw, 3rem) 1rem;
+      }
+
+      .page-header h1 {
+        margin: 0.7rem 0 0.5rem;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(2.8rem, 8vw, 5rem);
+        color: var(--river-deep);
+      }
+
+      .page-header p {
+        margin: 0;
+        max-width: 62ch;
+        color: var(--ink-soft);
+      }
+
+      .tools-layout {
+        padding: 0 clamp(1.2rem, 4vw, 3rem) 2.8rem;
+      }
+
+      .tool-card {
+        background: rgba(255,255,255,0.82);
+        border: 1px solid rgba(18, 30, 38, 0.12);
+        border-radius: 24px;
+        box-shadow: 0 12px 24px rgba(15,22,25,0.08);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 280px 1fr;
+      }
+
+      .tool-rail {
+        background: linear-gradient(135deg, rgba(18,61,77,0.96), rgba(13,43,56,0.88));
+        color: #f5efe6;
+        padding: 1.5rem;
+      }
+
+      .tool-rail .icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .tool-rail h2 {
+        margin: 0;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 2.5rem;
+      }
+
+      .tool-body {
+        padding: 1.5rem;
+      }
+
+      .tool-body p {
+        margin-top: 0;
+        color: var(--ink-soft);
+      }
+
+      .tool-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin: 1rem 0 1.2rem;
+      }
+
+      .meta-pill {
+        display: inline-block;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(212,167,127,0.14);
+        color: var(--river-deep);
+        font-size: 0.74rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 3rem;
+        padding: 0.8rem 1.4rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--river) 0%, #254d59 100%);
+        color: #fff;
+        box-shadow: 0 12px 22px rgba(18,61,77,0.18);
+        font-weight: 700;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        transform: translateY(-1px);
+      }
+
+      .footer {
+        padding: 1.4rem 1rem 2.4rem;
+        background: rgba(15, 21, 25, 0.97);
+        color: #f5efe6;
+      }
+
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .footer a {
+        color: #f5efe6;
+      }
+
+      @media (max-width: 760px) {
         .tool-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
+          grid-template-columns: 1fr;
         }
-        
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      }
+
+      @media (max-width: 560px) {
+        .site-shell {
+          padding: 0.8rem 0.7rem 2rem;
         }
-        
-        .tool-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
+
+        .page-header {
+          padding: 1.2rem 1.1rem 0.9rem;
         }
-        
-        .tool-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+
+        .page-header h1 {
+          font-size: clamp(2.5rem, 13vw, 4rem);
         }
-        
-        .tool-name {
-            font-size: 1.5rem;
-            font-weight: bold;
+
+        .tools-layout {
+          padding: 0 1rem 1.8rem;
         }
-        
-        .tool-content {
-            padding: 1.5rem;
+
+        .tool-rail,
+        .tool-body {
+          padding: 1.15rem;
         }
-        
-        .tool-description {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.6;
+
+        .button {
+          width: 100%;
         }
-        
-        .tool-link {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background 0.3s;
-            width: 100%;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        .tool-link:hover:not(:disabled) {
-            background: #764ba2;
-        }
-        
-        footer {
-            background: rgba(0,0,0,0.8);
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 2rem;
-        }
+      }
     </style>
-</head>
-<body>
-    <header>
-        <h1>🛠️ DEXPRO Tools</h1>
-        <p>Useful utilities for productivity and information</p>
-    </header>
-    
-    <nav>
-        <a href="../index.html">← Back to Home</a>
-        <a href="../catalog/mineral-catalogue.html">Catalog</a>
-    </nav>
-    
-    <div class="container">
-        <div class="tools-grid">
-            <div class="tool-card">
-                <div class="tool-header">
-                    <div class="tool-icon">🌍</div>
-                    <div class="tool-name">World Clock</div>
-                </div>
-                <div class="tool-content">
-                    <p class="tool-description">Track the current time across multiple time zones around the world. Perfect for international business and global coordination.</p>
-                    <a href="world-clock.html" class="tool-link">Open World Clock →</a>
-                </div>
-            </div>
-            
-            <div class="tool-card">
-                <div class="tool-header">
-                    <div class="tool-icon">📅</div>
-                    <div class="tool-name">Coming Soon</div>
-                </div>
-                <div class="tool-content">
-                    <p class="tool-description">More tools coming soon! We're working on adding more useful utilities to help you stay productive and informed.</p>
-                    <button class="tool-link" disabled style="opacity: 0.6; cursor: not-allowed;">Coming Soon</button>
-                </div>
-            </div>
-            
-            <div class="tool-card">
-                <div class="tool-header">
-                    <div class="tool-icon">🎯</div>
-                    <div class="tool-name">Coming Soon</div>
-                </div>
-                <div class="tool-content">
-                    <p class="tool-description">Exciting new tools are in development. Stay tuned for updates and new features that will enhance your experience.</p>
-                    <button class="tool-link" disabled style="opacity: 0.6; cursor: not-allowed;">Coming Soon</button>
-                </div>
-            </div>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="brand-row">
+          <div class="brand"><p class="eyebrow">Nile quartz • black sand</p><a class="brand-mark" href="../index.html">DEXPRO</a></div>
         </div>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="../catalog/mineral-catalogue.html">Catalogue</a>
+          <a href="index.html" aria-current="page">Tools</a>
+          <a href="world-clock.html">World Clock</a>
+        </nav>
+      </header>
+
+      <main>
+        <header class="page-header">
+          <p class="eyebrow">DEXPRO tools</p>
+          <h1>Field-ready utility index</h1>
+          <p>
+            The DEXPRO tools section keeps a focused, dependable set of reference utilities for coordination and planning. Current active utility: the World Clock.
+          </p>
+        </header>
+
+        <section class="tools-layout" aria-label="Tool list">
+          <article class="tool-card">
+            <div class="tool-rail">
+              <div class="icon" aria-hidden="true">🌍</div>
+              <h2>World Clock</h2>
+            </div>
+            <div class="tool-body">
+              <p>
+                Track multiple time zones with a cleaner, mobile-friendly interface for field planning, scheduling, and coordinating across regions.
+              </p>
+              <div class="tool-meta" aria-label="World Clock features">
+                <span class="meta-pill">Responsive</span>
+                <span class="meta-pill">Saved locally</span>
+                <span class="meta-pill">Accessible</span>
+              </div>
+              <a class="button" href="world-clock.html">Open World Clock</a>
+            </div>
+          </article>
+        </section>
+      </main>
     </div>
-    
-    <footer>
-        <p>&copy; 2026 DEXPRO. All rights reserved. | Tools & Utilities</p>
+
+    <footer class="footer" aria-label="Footer">
+      <div class="footer-inner">
+        <div>© 2026 DEXPRO — tools and reference utilities.</div>
+        <div class="footer-links">
+          <a href="../index.html">Home</a>
+          <a href="../catalog/mineral-catalogue.html">Catalogue</a>
+          <a href="world-clock.html">World Clock</a>
+        </div>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

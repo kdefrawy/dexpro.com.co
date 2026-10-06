@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DEXPRO mineral catalogue overview featuring Nile Quartz, Black Sand, and field-reference categories."
+    />
+    <meta name="theme-color" content="#173c4d" />
+    <title>DEXPRO Catalogue | Nile Quartz & Black Sand</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+      :root {
+        --paper: #f7f0e3;
+        --sand: #d4a77f;
+        --ink: #171d22;
+        --ink-soft: #394751;
+        --river: #123d4d;
+        --river-deep: #0d2b38;
+        --copper: #b7682d;
+        --mist: #edf2f5;
+        --line: rgba(18, 30, 38, 0.12);
+        --shadow: rgba(15, 22, 27, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        font-family: 'Manrope', 'Segoe UI', sans-serif;
+        background:
+          linear-gradient(180deg, #f4ecdf 0%, #efe2c8 100%);
+        color: var(--ink);
+        line-height: 1.6;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          repeating-linear-gradient(
+            0deg,
+            rgba(14, 25, 30, 0.02),
+            rgba(14, 25, 30, 0.02) 1px,
+            transparent 1px,
+            transparent 7px
+          );
+        pointer-events: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:focus-visible,
+      button:focus-visible,
+      select:focus-visible {
+        outline: 3px solid rgba(183, 101, 46, 0.5);
+        outline-offset: 2px;
+      }
+
+      .site-shell {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem 4rem;
+      }
+
+      .site-header {
+        border: 1px solid var(--line);
+        background: rgba(13, 26, 33, 0.96);
+        color: #f5f0ea;
+        border-radius: 18px 18px 0 0;
+        box-shadow: 0 16px 30px var(--shadow);
+      }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 1.2rem 0.8rem;
+      }
+
+      .brand-mark {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(2.2rem, 5vw, 3.1rem);
+        letter-spacing: 0.08em;
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--sand);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+      }
+
+      .site-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        padding: 0 1rem 1rem;
+      }
+
+      .site-nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.7rem;
+        padding: 0.65rem 1rem;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        color: #f5f0ea;
+        border: 1px solid rgba(255,255,255,0.09);
+        transition: background 0.2s ease;
+      }
+
+      .site-nav a:hover,
+      .site-nav a:focus-visible {
+        background: rgba(212,167,127,0.16);
+      }
+
+      .site-nav a[aria-current="page"] {
+        background: rgba(212, 167, 127, 0.18);
+        border-color: rgba(212,167,127,0.66);
+      }
+
+      main {
+        background: rgba(255,255,255,0.74);
+        border: 1px solid var(--line);
+        border-top: none;
+        border-radius: 0 0 18px 18px;
+        box-shadow: 0 16px 30px var(--shadow);
+      }
+
+      .page-header {
+        padding: clamp(1.5rem, 4vw, 3rem) clamp(1.2rem, 4vw, 3rem) 1rem;
+      }
+
+      .page-header h1 {
+        margin: 0.6rem 0 0.5rem;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(2.8rem, 8vw, 5rem);
+        line-height: 0.96;
+        color: var(--river-deep);
+      }
+
+      .lede {
+        font-size: 1.04rem;
+        max-width: 62ch;
+        margin: 0;
+        color: var(--ink-soft);
+      }
+
+      .catalog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.1rem;
+        padding: 0 clamp(1.2rem, 4vw, 3rem) 2.5rem;
+      }
+
+      .catalog-card {
+        background: rgba(255,255,255,0.8);
+        border: 1px solid rgba(18, 30, 38, 0.12);
+        border-radius: 22px;
+        box-shadow: 0 12px 24px rgba(15,22,25,0.07);
+        padding: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        border-radius: 22px 5px 22px 22px;
+      }
+
+      .catalog-card::before {
+        content: "";
+        position: absolute;
+        inset: -20% -25% auto auto;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: rgba(212, 167, 127, 0.14);
+      }
+
+      .catalog-card h2 {
+        margin: 0.7rem 0 0.4rem;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        color: var(--river-deep);
+      }
+
+      .catalog-card:nth-child(2) {
+        background:
+          repeating-linear-gradient(174deg, transparent 0 22px, rgba(255,255,255,0.035) 23px 25px, transparent 26px 48px),
+          #202a2d;
+        border-color: rgba(23, 29, 34, 0.45);
+      }
+
+      .catalog-card:nth-child(2) h2,
+      .catalog-card:nth-child(2) p,
+      .catalog-card:nth-child(2) li {
+        color: #f4efe6;
+      }
+
+      .catalog-card p,
+      .catalog-card li {
+        color: var(--ink-soft);
+      }
+
+      .catalog-card ul {
+        margin: 0.9rem 0 0;
+        padding-left: 1.2rem;
+      }
+
+      .note-panel {
+        margin: 0 clamp(1.2rem, 4vw, 3rem) 2.8rem;
+        border-radius: 22px;
+        border: 1px solid rgba(18,30,38,0.12);
+        background: linear-gradient(135deg, rgba(18,61,77,0.96), rgba(13, 43, 56, 0.9));
+        color: #f5efe6;
+        padding: 1.5rem;
+        box-shadow: 0 12px 22px rgba(15,22,25,0.08);
+      }
+
+      .note-panel h3 {
+        margin: 0 0 0.6rem;
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        font-family: 'Cormorant Garamond', Georgia, serif;
+      }
+
+      .note-panel p {
+        margin: 0.6rem 0 0;
+        color: rgba(245, 239, 230, 0.9);
+      }
+
+      .footer {
+        padding: 1.4rem 1rem 2.4rem;
+        background: rgba(15, 21, 25, 0.96);
+        color: #f5efe6;
+      }
+
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .footer a {
+        color: #f5efe6;
+      }
+
+      @media (max-width: 860px) {
+        .catalog-grid {
+          grid-template-columns: 1fr;
+          gap: 0.9rem;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .site-shell {
+          padding: 0.8rem 0.7rem 2rem;
+        }
+
+        .page-header {
+          padding: 1.2rem 1.1rem 0.9rem;
+        }
+
+        .page-header h1 {
+          font-size: clamp(2.5rem, 13vw, 4rem);
+        }
+
+        .catalog-grid {
+          padding: 0 1rem 1.8rem;
+        }
+
+        .catalog-card {
+          padding: 1.15rem;
+        }
+
+        .note-panel {
+          margin: 0 1rem 1.8rem;
+          padding: 1.15rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="brand-row">
+          <div class="brand"><p class="eyebrow">Nile quartz • black sand</p><a class="brand-mark" href="../index.html">DEXPRO</a></div>
+        </div>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="mineral-catalogue.html" aria-current="page">Catalogue</a>
+          <a href="../tools/index.html">Tools</a>
+          <a href="../tools/world-clock.html">World Clock</a>
+        </nav>
+      </header>
+
+      <main>
+        <header class="page-header">
+          <p class="eyebrow">Catalogue overview</p>
+          <h1>Mineral field guide</h1>
+          <p class="lede">
+            This catalogue page is an editorial overview of the DEXPRO mineral focus. It is not a live inventory feed and intentionally avoids claiming stock numbers, pricing, certifications, or provenance guarantees.
+          </p>
+        </header>
+
+        <section class="catalog-grid" aria-label="Mineral categories">
+          <article class="catalog-card">
+            <p class="eyebrow">Category I</p>
+            <h2>Nile Quartz</h2>
+            <p>
+              Quartz reference categories described through visible clarity, form, and surface appearance. The emphasis is on visual study rather than claims about source.
+            </p>
+            <ul>
+              <li>Transparent and milky quartz textures</li>
+              <li>Clarity and surface observations</li>
+              <li>Specimen-led reference notes</li>
+            </ul>
+          </article>
+
+          <article class="catalog-card">
+            <p class="eyebrow">Category II</p>
+            <h2>Black Sand</h2>
+            <p>
+              An editorial category for dark granular material, presented through visible tone, grain, and texture without claims about composition or source.
+            </p>
+            <ul>
+              <li>Dark appearance and visible texture</li>
+              <li>Grain and texture variation</li>
+              <li>Field-study visual reference</li>
+            </ul>
+          </article>
+
+          <article class="catalog-card">
+            <p class="eyebrow">Category III</p>
+            <h2>Field & Tools</h2>
+            <p>
+              Reference utilities such as the world clock support scheduling and planning across selected time zones.
+            </p>
+            <ul>
+              <li>Time-zone coordination</li>
+              <li>Study and planning support</li>
+              <li>Responsive utility access</li>
+            </ul>
+          </article>
+        </section>
+
+        <aside class="note-panel" aria-label="Catalogue note">
+          <h3>Catalogue note</h3>
+          <p>
+            Entries are presented as categories and editorial notes rather than stock records. DEXPRO keeps the catalogue honest by avoiding unverified inventory, sales claims, or provenance language that cannot be substantiated.
+          </p>
+          <p>
+            For live coordination and reference, continue to the <a href="../tools/world-clock.html" style="color: #f5d0a2; text-decoration: underline;">World Clock</a> utility or return to the <a href="../index.html" style="color: #f5d0a2; text-decoration: underline;">home page</a>.
+          </p>
+        </aside>
+      </main>
+    </div>
+
+    <footer class="footer" aria-label="Footer">
+      <div class="footer-inner">
+        <div>© 2026 DEXPRO — mineral catalogue overview.</div>
+        <div class="footer-links">
+          <a href="../index.html">Home</a>
+          <a href="../tools/index.html">Tools</a>
+          <a href="../tools/world-clock.html">World Clock</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

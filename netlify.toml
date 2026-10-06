@@ -1,0 +1,12 @@
+[build]
+publish = "."
+
+[[redirects]]
+from = "/catalog"
+to = "/catalog/mineral-catalogue.html"
+status = 200
+
+[[redirects]]
+from = "/catalog/"
+to = "/catalog/mineral-catalogue.html"
+status = 200
